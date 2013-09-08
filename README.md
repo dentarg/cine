@@ -9,3 +9,8 @@
 ### Start
 
 	foreman start
+
+### Deploy
+
+	git push heroku
+	heroku config:set sessionid=xxx
