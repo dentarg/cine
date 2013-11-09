@@ -1,4 +1,3 @@
-require 'date'
 require 'sinatra/base'
 
 $:.unshift File.join(File.dirname(__FILE__), 'lib')
