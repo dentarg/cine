@@ -6,8 +6,7 @@ class FilmDnSe
   def self.fetch(url, limit = 10)
     raise ArgumentError, 'too many HTTP redirects' if limit == 0
 
-    url = URI.encode(url)
-    uri = URI(url)
+    uri = Addressable::URI.parse(url)
     cookie = { "Cookie" => "sessionid=#{ENV.fetch('sessionid')};" }
 
     request  = Net::HTTP::Get.new(uri.request_uri, cookie)
