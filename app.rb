@@ -3,7 +3,7 @@ require 'sinatra/base'
 $:.unshift File.join(File.dirname(__FILE__), 'lib')
 
 require 'pagination'
-require './film_dn_se'
+require 'film_dn_se'
 
 class AppController < Sinatra::Base
   configure :development do
