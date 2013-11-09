@@ -1,5 +1,9 @@
 require 'date'
 require 'sinatra/base'
+
+$:.unshift File.join(File.dirname(__FILE__), 'lib')
+
+require 'pagination'
 require './film_dn_se'
 
 class AppController < Sinatra::Base
@@ -9,6 +13,10 @@ class AppController < Sinatra::Base
   end
 
   get '/url' do
+    if params.has_key?('p')
+      url = Pagination.url(request.referrer, params['p'])
+      redirect url
+    end
     url = params[:url]
     url = FilmDnSe::URL if url.to_s.empty?
     body FilmDnSe.fetch(url)
